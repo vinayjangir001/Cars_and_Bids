@@ -203,6 +203,19 @@ public class AuctionService {
         auctionRepository.delete(existingAuction);
         return true;
     }
+/**
+ * Places a bid in an active auction.
+ * <p>
+ * Validations performed:
+ * - The auction must exist and be active.
+ * - The bid amount must be greater than the current highest bid.
+ * - The bidder must not be the seller.
+ *
+ * @param auctionId the ID of the auction where the bid is placed
+ * @param bidderId the ID of the user placing the bid
+ * @param amount the bid amount
+ * @return the saved Bid object
+ */
 
     public ResponseEntity placeBid(Long auctionId, Long userId, BidRequest bidRequest) {
         try {
